@@ -1,0 +1,155 @@
+.film-comparator {
+  --fc-mint: #afdcca;
+  --fc-warm: #f5cd90;
+  color: #e8edef;
+  min-width: 0;
+  width: 100%;
+}
+.fc-labels, .fc-toolbar, .fc-jumps, .fc-optics {
+  display: flex;
+  align-items: center;
+}
+.fc-labels {
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .35rem 0 .5rem;
+  font-size: .76rem;
+  font-weight: 650;
+}
+.fc-labels span:last-child { text-align: right; }
+.fc-labels span::before, .fc-labels span:last-child::after {
+  content: "";
+  display: inline-block;
+  width: .36rem;
+  height: .36rem;
+  margin: 0 .5em .1em 0;
+  background: var(--fc-warm);
+}
+.fc-labels span:last-child::before { display: none; }
+.fc-labels span:last-child::after { margin-inline: .5em 0; background: var(--fc-mint); }
+.fc-stage {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  width: 100%;
+  background: #071720;
+  outline: 1px solid #53636a;
+  outline-offset: -1px;
+  user-select: none;
+  touch-action: none;
+  cursor: ew-resize;
+}
+.fc-stage:focus-visible { outline: 2px solid var(--fc-warm); outline-offset: 2px; }
+.fc-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.fc-layer img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform-origin: top left;
+  transform: translate(var(--fc-x), var(--fc-y)) scale(var(--fc-zoom));
+  pointer-events: none;
+}
+.fc-before { clip-path: inset(0 calc(100% - var(--fc-split)) 0 0); }
+.fc-stage::after {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  left: var(--fc-split);
+  border-left: 1px solid #fff8e8;
+  box-shadow: -1px 0 1px #09151c88, 1px 0 1px #09151c88;
+  pointer-events: none;
+}
+.fc-stage .fc-split {
+  position: absolute;
+  z-index: 1;
+  inset-block: 0;
+  left: clamp(0px, calc(var(--fc-split) - 22px), calc(100% - 44px));
+  display: grid;
+  place-items: center;
+  width: 44px;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: none;
+  cursor: ew-resize;
+  outline: none;
+}
+.fc-split > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 34px;
+  height: 29px;
+  border: 1px solid #f8f2e1;
+  border-radius: 4px;
+  background: #ecf0df;
+  box-shadow: 0 1px 8px #06101570;
+}
+.fc-split:focus-visible > span { outline: 3px solid var(--fc-warm); outline-offset: 3px; }
+.fc-split i {
+  width: 6px;
+  height: 6px;
+  border-left: 2px solid #1f3c42;
+  border-bottom: 2px solid #1f3c42;
+  transform: rotate(45deg);
+}
+.fc-split i + i { transform: rotate(225deg); }
+.film-comparator[data-zoomed="true"] .fc-stage { cursor: grab; }
+.film-comparator[data-zoomed="true"] .fc-stage.fc-dragging { cursor: grabbing; }
+.fc-loading {
+  position: absolute;
+  bottom: .5rem;
+  left: .55rem;
+  padding: .22rem .45rem;
+  background: #0a1820e6;
+  color: #e7eeee;
+  font-size: .75rem;
+}
+.fc-loading[hidden], .fc-caption[hidden] { display: none; }
+.fc-toolbar {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .25rem .4rem;
+  padding: .4rem 0;
+  border-bottom: 1px solid #334148;
+}
+.fc-jumps { flex-wrap: wrap; gap: .25rem; }
+.fc-jumps button, .fc-optics button {
+  touch-action: manipulation;
+  min-height: 42px;
+  color: #c2cdd1;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.fc-jumps button { padding: .25rem .42rem; font-size: .78rem; }
+.fc-jumps button[aria-pressed="true"] {
+  color: var(--fc-mint);
+  text-decoration: underline;
+  text-underline-offset: .34em;
+  text-decoration-thickness: 2px;
+}
+.fc-optics { gap: .15rem; margin-left: auto; }
+.fc-optics button { width: 38px; padding: 0; font: 1.3rem/1 var(--mono, monospace); }
+.fc-optics button:disabled { color: #74828a; opacity: .65; }
+.fc-optics output { min-width: 3.5ch; text-align: center; color: var(--fc-warm); font: .84rem/1.2 var(--mono, monospace); }
+.fc-hint, .fc-caption { margin: .55rem 0 0; line-height: 1.55; }
+.fc-hint { font-size: .76rem; color: #a9babe; }
+.fc-caption { font-size: .88rem; color: #d9e4e6; }
+@media (max-width: 450px) {
+  .fc-jumps { gap: 0; }
+  .fc-jumps button { padding-inline: .28rem; }
+  .fc-optics { gap: 0; }
+  .fc-optics button { width: 32px; }
+}

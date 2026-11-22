@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0a1015" />
+    <meta
+      name="description"
+      content="새로고침할 때마다 같은 시각의 수조 영상이 달라진다. 사라진 마지막 금붕어와 바뀌는 기록을 조사하는 인터랙티브 수사극."
+    />
+    <title>수조 404 · 심야 수족관 기록실</title>
+    <link rel="icon" type="image/svg+xml" href="/mark.svg" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/comparator.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#investigation">조사 화면으로 이동</a>
+    <header class="masthead">
+      <div class="wrap mast-content">
+        <div class="identity">
+          <img src="/mark.svg" alt="" width="38" height="38" /><strong>심야 수족관</strong
+          ><span class="brand-divider"></span><span class="brand-sub">야간 기록실</span>
+        </div>
+        <div class="head-actions">
+          <span id="save-status" class="save-status"><i></i><span>기록 연결 중</span></span
+          ><button class="guide-btn" id="guide"><span data-icon="help"></span>조사 안내</button>
+        </div>
+      </div>
+    </header>
+    <main class="wrap" id="investigation">
+      <section class="case-head" aria-labelledby="case-title">
+        <div class="case-summary">
+          <div class="case-ref"><span class="reg-mark"></span>CASE FILE <span>/</span> AQ–0404</div>
+          <div class="case-name">
+            <h1 id="case-title">수조 404</h1>
+            <span class="case-badge" id="case-badge">미해결</span>
+          </div>
+          <p>오전 2시 14분, 마지막 금붕어가 사라졌다. 그 시각의 영상에는 아직 꼬리가 남아 있다.</p>
+        </div>
+        <div class="case-stamp" aria-hidden="true">
+          <div class="barcode"></div>
+          <span>AQ / NIGHT ARCHIVE</span>
+        </div>
+      </section>
+      <div class="workstation">
+        <section class="monitor" id="monitor" aria-labelledby="monitor-title">
+          <div class="panel-bar">
+            <div class="panel-name">
+              <span data-icon="camera"></span>
+              <h2 id="monitor-title">현장 모니터</h2>
+            </div>
+            <span class="camera-id">CAM–04 <i></i> 격리 수조</span>
+          </div>
+          <div class="image-area" id="image-area">
+            <img
+              id="frame"
+              src="/art/tank-original.webp"
+              alt="어두운 수조의 금붕어와 바닥의 배수망"
+              fetchpriority="high"
+            />
+            <div class="glass" aria-hidden="true"></div>
+            <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i
+            ><i class="corner br"></i>
+            <button
+              type="button"
+              class="clock-point"
+              data-point="clock"
+              aria-label="03 기록 시계 조사"
+            >
+              <span class="clock-index">03</span
+              ><span class="clock-text"
+                ><small>TIME CODE</small><b id="frame-clock">02:14:14</b></span
+              >
+            </button>
+            <span class="rec"><i></i> REC</span>
+            <button
+              type="button"
+              class="hotspot trace"
+              data-point="trace"
+              aria-label="01 금붕어 흔적 조사"
+            >
+              <span class="target" aria-hidden="true"><i></i></span
+              ><span class="pin-name"><b>01</b> 금붕어 흔적</span>
+            </button>
+            <button
+              type="button"
+              class="hotspot drain"
+              data-point="drain"
+              aria-label="02 배수구 조사"
+            >
+              <span class="target" aria-hidden="true"><i></i></span
+              ><span class="pin-name"><b>02</b> 배수구</span>
+            </button>
+            <span class="frame-caption" id="frame-caption">TANK 404 / NIGHT VISION</span>
+            <button class="expand" id="expand" aria-label="모니터 확대" title="모니터 확대">
+              <span data-icon="expand"></span>
+            </button>
+          </div>
+          <div class="monitor-controls">
+            <div class="film-transport" role="group" aria-label="보관된 회차 탐색">
+              <button
+                class="film-step"
+                id="round-prev"
+                aria-label="이전 회차"
+                title="이전 회차"
+                disabled
+              >
+                <span data-icon="chev"></span>
+              </button>
+              <div class="round-readout" aria-live="polite" aria-atomic="true">
+                <span
+                  ><small id="round-mode">최신 영상</small
+                  ><strong id="round-label">01 / 01회차</strong></span
+                >
+              </div>
+              <button
+                class="film-step"
+                id="round-next"
+                aria-label="다음 회차"
+                title="다음 회차"
+                disabled
+              >
+                <span data-icon="chev"></span>
+              </button>
+            </div>
+            <div class="control-buttons">
+              <button class="return-latest" id="round-latest" hidden>최신으로</button>
+              <button
+                class="refresh"
+                id="refresh"
+                title="가장 최근 영상 다음의 새 회차를 수신합니다."
+              >
+                <span data-icon="refresh"></span>새 회차 수신
+              </button>
+            </div>
+          </div>
+          <p class="archive-hint" id="archive-hint" hidden></p>
+        </section>
+        <section class="ledger" id="ledger" aria-labelledby="ledger-title">
+          <div class="panel-bar">
+            <div class="panel-name">
+              <span data-icon="folder"></span>
+              <h2 id="ledger-title">사건 기록철</h2>
+            </div>
+            <span class="file-id">FILE / 404</span>
+          </div>
+          <div class="tabs" role="tablist" aria-label="기록철 보기">
+            <button id="tab-evidence" role="tab" aria-selected="true" aria-controls="ledger-body">
+              증거 목록</button
+            ><button
+              id="tab-compare"
+              role="tab"
+              aria-selected="false"
+              aria-controls="ledger-body"
+              tabindex="-1"
+            >
+              회차 비교
+            </button>
+            <button
+              id="tab-radio"
+              role="tab"
+              aria-selected="false"
+              aria-controls="ledger-body"
+              tabindex="-1"
+            >
+              야간 교신
+            </button>
+          </div>
+          <div id="ledger-body" class="ledger-body" role="tabpanel" aria-labelledby="tab-evidence">
+            <p class="loading">수조 기록을 불러오고 있습니다.</p>
+          </div>
+          <div class="trial-foot">
+            <button id="trial" class="trial-button" disabled>
+              <span data-icon="lock"></span><span>최종 심리</span>
+            </button>
+            <p id="trial-note">영상 수신을 기다리는 중입니다.</p>
+          </div>
+        </section>
+      </div>
+      <footer class="foot">
+        <div><span data-icon="wave"></span>심야 수족관 관제실</div>
+        <span>ARCHIVE SYSTEM <b>/</b> 04.04</span>
+      </footer>
+    </main>
+    <dialog id="dialog">
+      <div class="dialog-shell">
+        <button id="dismiss" class="dismiss" aria-label="닫기"><span data-icon="x"></span></button>
+        <div id="dialog-content"></div>
+      </div>
+    </dialog>
+    <div id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
