@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS case_files (
+  id TEXT PRIMARY KEY NOT NULL,
+  revision INTEGER NOT NULL,
+  dossier TEXT NOT NULL
+);
