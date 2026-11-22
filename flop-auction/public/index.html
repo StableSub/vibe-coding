@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#1c382d" />
+    <meta
+      name="description"
+      content="100콩으로 세 가지 수상한 발명품에 입찰하세요. 결정적인 하자는 낙찰을 받은 뒤 공개됩니다."
+    />
+    <title>망한 발명품 경매장</title>
+    <link rel="icon" href="/mark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <a href="#app" class="skip">본문으로 이동</a>
+    <header>
+      <div class="wrap head">
+        <a class="brand" href="/" id="brand"
+          ><img src="/mark.svg" width="40" height="40" alt="" /><strong
+            >망한 발명품 경매장</strong
+          ></a
+        >
+        <nav aria-label="경매장 메뉴" id="nav"></nav>
+      </div>
+    </header>
+    <main id="app" tabindex="-1"><div class="wrap load">경매 도록을 펴는 중입니다.</div></main>
+    <footer>
+      <div class="wrap foot">
+        <span><img src="/mark.svg" width="21" height="21" alt="" />망한 발명품 경매장</span>
+        <div class="footer-links">
+          <button data-act="rules">이용 방법</button
+          ><button data-act="history">지난 경매 검색</button>
+        </div>
+      </div>
+    </footer>
+    <dialog id="dialog" aria-labelledby="dialog-title">
+      <div class="dialog-body">
+        <button id="dismiss" class="icon-button close" aria-label="닫기">×</button>
+        <div id="dialog-content"></div>
+      </div>
+    </dialog>
+    <div id="notice" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
