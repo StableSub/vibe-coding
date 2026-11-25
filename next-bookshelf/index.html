@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>다음 책장</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="app.js"></script>
+</head>
+<body>
+<header class="wrap"><a href="./index.html"><span aria-hidden="true">冊</span> 다음 책장</a><button class="outline" id="open-report">모의 점검 결과</button></header>
+<main class="wrap">
+<section class="hero" aria-labelledby="hero-title">
+<div><h1 id="hero-title">한 권을 보내고,<br>한 권을 만나요.</h1>
+<p>다 읽은 책을 동네 책장에 올리고<br>이웃의 책으로 다음 페이지를 펼쳐 보세요.</p>
+<button id="open-add">책 등록하기</button></div>
+<div class="slip" aria-hidden="true"><div>다음 책장</div><strong>책 교환 카드</strong><dl><dt>보내는 곳</dt><dd>나의 책장</dd><dt>받는 곳</dt><dd>이웃의 책장</dd></dl></div>
+</section>
+<section class="shelf" aria-labelledby="shelf-title">
+<div class="section-head"><div><h2 id="shelf-title">동네 책장</h2><p id="count" aria-live="polite"></p></div>
+<div class="filters"><input id="search" type="search" aria-label="제목 또는 저자 검색" placeholder="제목 또는 저자 검색"><label><input id="available" type="checkbox"> 교환 가능한 책만</label></div></div>
+<p id="status" role="status"></p><ul id="books"></ul>
+</section>
+</main>
+<dialog id="add-dialog" aria-labelledby="add-title"><form id="add-form">
+<h2 id="add-title">책 등록하기</h2>
+<label>제목<input name="title" required maxlength="80"></label>
+<label>저자<input name="author" required maxlength="60"></label>
+<label>동네<input name="area" required maxlength="40"></label>
+<div class="actions"><button type="button" class="outline" id="cancel-add">취소</button><button>등록하기</button></div>
+</form></dialog>
+<dialog id="report" aria-labelledby="report-title"><h2 id="report-title">모의 점검 결과</h2>
+<p>결과 화면을 확인하기 위한 샘플입니다.</p>
+<ul><li>입력 검증 <strong>발견 예시</strong></li><li>접근 제어 <strong>검토 예시</strong></li><li>오류 메시지 <strong>통과 예시</strong></li></ul>
+<form method="dialog" class="actions"><button>닫기</button></form></dialog>
+</body>
+</html>

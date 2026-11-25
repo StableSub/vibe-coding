@@ -1,0 +1,8 @@
+{
+  "source": "mock",
+  "findings": [
+    { "id": "sample-1", "category": "input-validation", "status": "example-finding" },
+    { "id": "sample-2", "category": "access-control", "status": "example-review" },
+    { "id": "sample-3", "category": "error-messages", "status": "example-pass" }
+  ]
+}
